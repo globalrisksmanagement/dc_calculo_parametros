@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_5E457F90-D31D-4EB3-B228-978B83F89B70" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_B4DE08AB-ECEA-4B55-A5B5-39D5A8FB84CE" name="CalculoProbabilidadMora" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="decisioncredito_decisions">
+  <dmn:extensionElements/>
+  <dmn:inputData id="_594D1C1A-5D20-4093-9689-2B1FDF8C4853" name="Score Total">
+    <dmn:extensionElements/>
+    <dmn:variable id="_D10041F9-269D-4A45-9CDD-B079D3C34990" name="Score Total"/>
+  </dmn:inputData>
+  <dmn:businessKnowledgeModel id="_FE4CA071-268C-4C7C-BA64-390E8D4FBE6E" name="Probabilidad Mora Function">
+    <dmn:extensionElements/>
+    <dmn:variable id="_D6D8E0F2-2A77-4302-9958-02973B6578EA" name="Probabilidad Mora Function" typeRef="number"/>
+    <dmn:encapsulatedLogic id="_3C2E9388-32DE-442A-A9BE-F442E19F7DB0" kind="FEEL">
+      <dmn:formalParameter id="_A76DF7B3-115D-4455-B177-F30E85CC4ADB" name="Probabilidad Mora" typeRef="number"/>
+      <dmn:literalExpression id="_14108581-A3BD-41D7-84CB-72CE004B7F9B">
+        <dmn:text>1 / (1 + (exp(-Probabilidad Mora)))</dmn:text>
+      </dmn:literalExpression>
+    </dmn:encapsulatedLogic>
+  </dmn:businessKnowledgeModel>
+  <dmn:decision id="_BF312C5F-34D9-4E74-BF69-7CBA9B03FC32" name="Calculo Probabilidad Mora">
+    <dmn:extensionElements/>
+    <dmn:variable id="_13DF452B-6611-4FAB-BB77-1B6D07EAE83B" name="Calculo Probabilidad Mora" typeRef="number"/>
+    <dmn:informationRequirement id="_3D91E248-3C9A-4B6C-9CD0-7D5DBE6A964F">
+      <dmn:requiredInput href="#_594D1C1A-5D20-4093-9689-2B1FDF8C4853"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_5D61B97C-DBFA-4052-9239-990722FE39E2">
+      <dmn:requiredKnowledge href="#_FE4CA071-268C-4C7C-BA64-390E8D4FBE6E"/>
+    </dmn:knowledgeRequirement>
+    <dmn:literalExpression id="_27BA3DE9-C35A-4302-8F75-FDC0383DF9C5">
+      <dmn:text>Probabilidad Mora Function(Score Total)</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_14108581-A3BD-41D7-84CB-72CE004B7F9B">
+            <kie:width>313.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_3C2E9388-32DE-442A-A9BE-F442E19F7DB0">
+            <kie:width>50.0</kie:width>
+            <kie:width>313.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_27BA3DE9-C35A-4302-8F75-FDC0383DF9C5">
+            <kie:width>344.0</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-_594D1C1A-5D20-4093-9689-2B1FDF8C4853" dmnElementRef="_594D1C1A-5D20-4093-9689-2B1FDF8C4853" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="413" y="371" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_FE4CA071-268C-4C7C-BA64-390E8D4FBE6E" dmnElementRef="_FE4CA071-268C-4C7C-BA64-390E8D4FBE6E" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="661" y="199" width="211" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_BF312C5F-34D9-4E74-BF69-7CBA9B03FC32" dmnElementRef="_BF312C5F-34D9-4E74-BF69-7CBA9B03FC32" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="358" y="193" width="212" height="57"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_3D91E248-3C9A-4B6C-9CD0-7D5DBE6A964F" dmnElementRef="_3D91E248-3C9A-4B6C-9CD0-7D5DBE6A964F">
+        <di:waypoint x="513" y="396"/>
+        <di:waypoint x="358" y="221.5"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_5D61B97C-DBFA-4052-9239-990722FE39E2" dmnElementRef="_5D61B97C-DBFA-4052-9239-990722FE39E2">
+        <di:waypoint x="766.5" y="224"/>
+        <di:waypoint x="570" y="221.5"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
